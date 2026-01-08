@@ -1,0 +1,238 @@
+[
+  {
+    "type": "date",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "duration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "negative_duration",
+          "named": true
+        },
+        {
+          "type": "positive_duration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "duration",
+          "named": true
+        },
+        {
+          "type": "range",
+          "named": true
+        },
+        {
+          "type": "summary",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "negative_duration",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "positive_duration",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "range",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "open_range",
+          "named": true
+        },
+        {
+          "type": "time",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "date",
+          "named": true
+        },
+        {
+          "type": "entry",
+          "named": true
+        },
+        {
+          "type": "should_total",
+          "named": true
+        },
+        {
+          "type": "summary",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "should_total",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "duration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "record",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "summary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tag_name",
+          "named": true
+        },
+        {
+          "type": "tag_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "time",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "time_association",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "time_association",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": " ",
+    "named": false
+  },
+  {
+    "type": "!)",
+    "named": false
+  },
+  {
+    "type": "#",
+    "named": false
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": "open_range",
+    "named": true
+  },
+  {
+    "type": "tag_name",
+    "named": true
+  },
+  {
+    "type": "tag_value",
+    "named": true
+  }
+]
