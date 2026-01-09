@@ -1,0 +1,1013 @@
+==================
+Simple date record
+==================
+
+2020-01-01
+
+---
+
+(source_file
+  (record
+    (date)))
+
+==================
+Date with should-total
+==================
+
+2020-01-01 (8h!)
+
+---
+
+(source_file
+  (record
+    (date)
+    (should_total
+      (duration
+        (positive_duration)))))
+
+==================
+Date with record summary
+==================
+
+2020-01-01
+This is a summary
+With multiple lines
+
+---
+
+(source_file
+  (record
+    (date)
+    (summary)))
+
+==================
+Date with record summary and tags
+==================
+
+2020-01-01
+Summary with #tag and #project=123
+
+---
+
+(source_file
+  (record
+    (date)
+    (summary
+      (tag
+        (tag_name))
+      (tag
+        (tag_name)
+        (tag_value)))))
+
+==================
+Record with duration entry
+==================
+
+2020-01-01
+    2h30m
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Record with negative duration entry
+==================
+
+2020-01-01
+    -1h30m Lunch break
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (negative_duration))
+      (summary))))
+
+==================
+Record with time range entry
+==================
+
+2020-01-01
+    8:00 - 10:30
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))))
+
+==================
+Record with 12-hour time range
+==================
+
+2020-01-01
+    8:00am - 2:00pm
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))))
+
+==================
+Record with open range
+==================
+
+2020-01-01
+    9:00 - ?
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (open_range))
+      (summary))))
+
+==================
+Record with multiple question marks in open range
+==================
+
+2020-01-01
+    9:00 - ???
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (open_range))
+      (summary))))
+
+==================
+Entry with inline summary
+==================
+
+2020-01-01
+    2h30m Working on #project
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary
+        (tag
+          (tag_name))))))
+
+==================
+Entry with multiline summary
+==================
+
+2020-01-01
+    2h30m This is a summary
+        that continues on next line
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Entry with summary on subsequent line
+==================
+
+2020-01-01
+    2h30m
+        Summary starts on next line
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Multiple entries
+==================
+
+2020-01-01
+    2h30m First entry
+    1h Second entry
+    8:00 - 10:00 Third entry
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))
+    (entry
+      (duration
+        (positive_duration))
+      (summary))
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))))
+
+==================
+Complex record with should-total and multiple entries
+==================
+
+2020-01-01 (8h!)
+Summary line
+    2h30m Entry with #tag
+    8:00 - 10:00
+    -30m Lunch
+
+---
+
+(source_file
+  (record
+    (date)
+    (should_total
+      (duration
+        (positive_duration)))
+    (summary)
+    (entry
+      (duration
+        (positive_duration))
+      (summary
+        (tag
+          (tag_name))))
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))
+    (entry
+      (duration
+        (negative_duration))
+      (summary))))
+
+==================
+Tags with different formats
+==================
+
+2020-01-01
+Summary with #simple-tag and #tag_name and #project=123
+Also #quoted="value with spaces" and #single='value'
+
+---
+
+(source_file
+  (record
+    (date)
+    (summary
+      (tag
+        (tag_name))
+      (tag
+        (tag_name))
+      (tag
+        (tag_name)
+        (tag_value))
+      (tag
+        (tag_name)
+        (tag_value))
+      (tag
+        (tag_name)
+        (tag_value)))))
+
+==================
+Shifted times - previous day
+==================
+
+2020-01-01
+    <23:00 - 2:00
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time
+          (time_association))
+        (time))
+      (summary))))
+
+==================
+Shifted times - next day
+==================
+
+2020-01-01
+    22:00 - 3:00>
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (time
+          (time_association)))
+      (summary))))
+
+==================
+Time with both shift markers
+==================
+
+2020-01-01
+    <23:00< - 3:00>
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time
+          (time_association)
+          (time_association))
+        (time
+          (time_association)))
+      (summary))))
+
+==================
+Duration with hours only
+==================
+
+2020-01-01
+    5h
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Duration with minutes only
+==================
+
+2020-01-01
+    45m
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Duration with explicit plus sign
+==================
+
+2020-01-01
+    +2h30m
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Large duration values
+==================
+
+2020-01-01
+    50h Working long
+    120m Same as 2h
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Date with dashes
+==================
+
+2020-01-01
+    1h
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Date with slashes
+==================
+
+2020/01/01
+    1h
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+24:00 special time
+==================
+
+2020-01-01
+    23:00 - 24:00
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))))
+
+==================
+12-hour time without padding
+==================
+
+2020-01-01
+    9:30am - 5:45pm
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))))
+
+==================
+Multiple records separated by blank lines
+==================
+
+2020-01-01
+    1h
+
+2020-01-02
+    2h
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary)))
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Unicode in tags and summaries
+==================
+
+2020-01-01
+Working on #読む and #日本語
+    2h Study time with #école
+
+---
+
+(source_file
+  (record
+    (date)
+    (summary
+      (tag
+        (tag_name))
+      (tag
+        (tag_name)))
+    (entry
+      (duration
+        (positive_duration))
+      (summary
+        (tag
+          (tag_name))))))
+
+==================
+Complex real-world example
+==================
+
+2020-01-01 (8h!)
+I walked #based
+It was so nice
+    +3m bla
+    8:30  -  10:30 Layout draft #project=478
+    10:30-??? Phone #call="Liz Jones"
+    5h A short summary.
+    -120m This is a longer summary, which
+        is continued on the next line.
+    14:00 - ?
+        Summaries can also start on the
+        subsequent line.
+
+---
+
+(source_file
+  (record
+    (date)
+    (should_total
+      (duration
+        (positive_duration)))
+    (summary
+      (tag
+        (tag_name)))
+    (entry
+      (duration
+        (positive_duration))
+      (summary))
+    (entry
+      (range
+        (time)
+        (time))
+      (summary
+        (tag
+          (tag_name)
+          (tag_value))))
+    (entry
+      (range
+        (time)
+        (open_range))
+      (summary
+        (tag
+          (tag_name)
+          (tag_value))))
+    (entry
+      (duration
+        (positive_duration))
+      (summary))
+    (entry
+      (duration
+        (negative_duration))
+      (summary))
+    (entry
+      (range
+        (time)
+        (open_range))
+      (summary))))
+
+==================
+Empty tag value with equals
+==================
+
+2020-01-01
+Summary with #tag= empty value
+
+---
+
+(source_file
+  (record
+    (date)
+    (summary
+      (tag
+        (tag_name)
+        (tag_value)))))
+
+==================
+Empty quoted tag value
+==================
+
+2020-01-01
+Summary with #tag="" and #other=''
+
+---
+
+(source_file
+  (record
+    (date)
+    (summary
+      (tag
+        (tag_name)
+        (tag_value))
+      (tag
+        (tag_name)
+        (tag_value)))))
+
+==================
+Zero duration
+==================
+
+2020-01-01
+    0h
+    0m
+    0h0m
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))
+    (entry
+      (duration
+        (positive_duration))
+      (summary))
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Negative zero duration
+==================
+
+2020-01-01
+    -0h
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (negative_duration))
+      (summary))))
+
+==================
+Time range with same start and end
+==================
+
+2020-01-01
+    9:00 - 9:00
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))))
+
+==================
+Midnight special cases
+==================
+
+2020-01-01
+    0:00 - 1:00
+    23:59 - 24:00
+    <24:00 - 1:00
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))
+    (entry
+      (range
+        (time
+          (time_association))
+        (time))
+      (summary))))
+
+==================
+Mixed indentation styles between records
+==================
+
+2020-01-01
+    1h
+
+2020-01-02
+	2h
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary)))
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Should-total with negative duration
+==================
+
+2020-01-01 (-3h30m!)
+
+---
+
+(source_file
+  (record
+    (date)
+    (should_total
+      (duration
+        (negative_duration)))))
+
+==================
+Should-total with zero
+==================
+
+2020-01-01 (0h!)
+
+---
+
+(source_file
+  (record
+    (date)
+    (should_total
+      (duration
+        (positive_duration)))))
+
+==================
+Entry without any summary
+==================
+
+2020-01-01
+    2h30m
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Range with spacing variations
+==================
+
+2020-01-01
+    8:00-9:00
+    8:00 -9:00
+    8:00- 9:00
+    8:00  -  9:00
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))))
+
+==================
+12-hour times with all variations
+==================
+
+2020-01-01
+    1:00am - 12:00pm
+    12:00am - 11:59pm
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))))
+
+==================
+Mixed entry types
+==================
+
+2020-01-01
+    8:00 - 12:00
+    -30m
+    +45m
+    13:00 - ?
+    2h30m
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (range
+        (time)
+        (time))
+      (summary))
+    (entry
+      (duration
+        (negative_duration))
+      (summary))
+    (entry
+      (duration
+        (positive_duration))
+      (summary))
+    (entry
+      (range
+        (time)
+        (open_range))
+      (summary))
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Tag with underscores and hyphens
+==================
+
+2020-01-01
+Summary with #multi_word_tag and #multi-word-tag
+
+---
+
+(source_file
+  (record
+    (date)
+    (summary
+      (tag
+        (tag_name))
+      (tag
+        (tag_name)))))
+
+==================
+Multiple blank lines between records
+==================
+
+2020-01-01
+    1h
+
+
+2020-01-02
+    2h
+
+---
+
+(source_file
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary)))
+  (record
+    (date)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
+
+==================
+Record with only summary no entries
+==================
+
+2020-01-01
+This is just a note
+No time entries today
+
+---
+
+(source_file
+  (record
+    (date)
+    (summary)))
+
+==================
+Record summary and entry summaries
+==================
+
+2020-01-01
+This is a record summary
+    2h30m This is an entry summary
+    1h Another entry
+
+---
+
+(source_file
+  (record
+    (date)
+    (summary)
+    (entry
+      (duration
+        (positive_duration))
+      (summary))
+    (entry
+      (duration
+        (positive_duration))
+      (summary))))
