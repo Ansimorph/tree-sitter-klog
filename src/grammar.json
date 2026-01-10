@@ -435,13 +435,8 @@
                   "value": " "
                 },
                 {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "_entry_summary_inline"
-                    }
-                  ]
+                  "type": "SYMBOL",
+                  "name": "_entry_summary_inline"
                 }
               ]
             }

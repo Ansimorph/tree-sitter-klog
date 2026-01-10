@@ -59,7 +59,7 @@ export default grammar({
 
     entry_summary: ($) =>
       seq(
-        choice($._newline, seq(" ", seq($._entry_summary_inline))),
+        choice($._newline, seq(" ", $._entry_summary_inline)),
         optional($._entry_summary_indented),
       ),
 

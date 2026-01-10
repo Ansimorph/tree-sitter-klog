@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-klog",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "tree-sitter parser for the klog time-tracking language",
   "type": "module",
   "repository": {
@@ -16,12 +16,7 @@
   },
   "main": "bindings/node",
   "types": "bindings/node",
-  "keywords": [
-    "incremental",
-    "parsing",
-    "tree-sitter",
-    "klog"
-  ],
+  "keywords": ["incremental", "parsing", "tree-sitter", "klog"],
   "files": [
     "grammar.js",
     "tree-sitter.json",
